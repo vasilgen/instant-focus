@@ -68,13 +68,18 @@ struct SettingsView: View {
             }
         }
         .formStyle(.grouped)
-        .frame(width: 460, height: height)
+        .scrollDisabled(!layout.scrolls)
+        .scrollIndicators(layout.scrolls ? .automatic : .never)
+        .frame(width: 460, height: layout.height)
     }
 
-    /// Fit the window to its content (each app row is ~37 pt; the Accessibility notice ~94 pt),
-    /// up to the screen's height. Only past that does the form scroll.
-    private var height: CGFloat {
-        let content = 464 + 37 * CGFloat(store.shortcuts.count) + (store.tapsReady ? 0 : 94)
-        return min(content, (NSScreen.main?.visibleFrame.height ?? 800) - 60)
+    /// The window grows with each app (~37 pt per row; the Accessibility notice ~94 pt) up to
+    /// 10 apps, without a scroll bar. Past 10 apps, or past the screen's height, the form scrolls.
+    private var layout: (height: CGFloat, scrolls: Bool) {
+        let maxRows = 10
+        let count = store.shortcuts.count
+        let content = 464 + 37 * CGFloat(min(count, maxRows)) + (store.tapsReady ? 0 : 94)
+        let screen = (NSScreen.main?.visibleFrame.height ?? 800) - 60
+        return (min(content, screen), count > maxRows || content > screen)
     }
 }
