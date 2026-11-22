@@ -14,7 +14,7 @@ whether its window is on the current Space, another Space, or full screen. No sl
 crossfade. That's all it does: trackpad swipes and other Space switching stay as macOS has them.
 
 <p align="center">
-  <img src="docs/screenshots/settings-dark.png" width="461" align="top" alt="Settings: your apps with their shortcuts (reorderable), the app list shortcut, menu bar icon style, launch at login">
+  <img src="docs/screenshots/settings-dark.png" width="461" align="top" alt="Settings: your apps with their shortcuts (reorderable), the app list shortcut, menu bar icon style, instant switching for everything, launch at login">
   <img src="docs/screenshots/app-list-dark.png" width="217" align="top" alt="The app list: your apps with their shortcuts, plus Settings and Quit">
 </p>
 
