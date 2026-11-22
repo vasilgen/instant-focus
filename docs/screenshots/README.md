@@ -23,8 +23,10 @@ Retina (2×) captures; the README shows them at half width.
 
 How:
 
-- **Settings window:** ⌘⇧4, Space, click the window (⌥-click leaves out the shadow).
-- **App list:** ⌘⇧Space, then ⌘⇧4 and drag over the icon and the list.
+- **Settings window:** ⌘⇧4, Space, **⌥-click** the window: macOS saves exactly the window, rounded
+  corners transparent, no shadow. That's the look the README uses. (The current dark ones were
+  cropped to that shape afterwards; they still show v0.1.0 with the old scrollbar, so retake them.)
+- **App list:** ⌘⇧Space, then ⌘⇧4, Space, **⌥-click** the open list (menus are windows too).
 - **Demo:** ⌘⇧5 → Record Selected Portion, with KeyCastr showing the keys.
 
 - Light and Dark: switch in System Settings → Appearance and take both.

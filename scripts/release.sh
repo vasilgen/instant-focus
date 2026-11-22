@@ -37,7 +37,7 @@ cask "instantfocus" do
   desc "Jump to any app with one shortcut, on any Space, without the animation"
   homepage "https://github.com/$OWNER/$REPO"
 
-  depends_on macos: ">= :ventura"
+  depends_on macos: :ventura
 
   app "InstantFocus.app"
 

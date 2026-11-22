@@ -1,17 +1,21 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/icon-black-on-white.png">
-  <img src="docs/screenshots/icon-white-on-black.png" width="96" align="right" alt="InstantFocus icon">
-</picture>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/icon-black-on-white.png">
+    <img src="docs/screenshots/icon-white-on-black.png" width="88" alt="InstantFocus icon">
+  </picture>
+</p>
 
-# InstantFocus
+<h1 align="center">InstantFocus</h1>
+
+<p align="center">Jump to any app with one shortcut, on any Space or full screen, without the animation.</p>
 
 A tiny macOS menu bar app: give each app a shortcut, press it, and you're in that app,
 whether its window is on the current Space, another Space, or full screen. No slide, no
 crossfade. That's all it does: trackpad swipes and other Space switching stay as macOS has them.
 
-<p>
-  <img src="docs/screenshots/settings-dark.png" width="469" alt="Settings: your apps with their shortcuts (reorderable), the app list shortcut, menu bar icon style, launch at login">
-  <img src="docs/screenshots/app-list-dark.png" width="222" alt="The app list: your apps with their shortcuts, plus Settings and Quit">
+<p align="center">
+  <img src="docs/screenshots/settings-dark.png" width="461" align="top" alt="Settings: your apps with their shortcuts (reorderable), the app list shortcut, menu bar icon style, launch at login">
+  <img src="docs/screenshots/app-list-dark.png" width="217" align="top" alt="The app list: your apps with their shortcuts, plus Settings and Quit">
 </p>
 
 The menu bar shows the focused app's icon when that app has a shortcut, otherwise ⚡,
@@ -20,10 +24,12 @@ drawn black on white or white on black (your choice in Settings). Click it, or p
 to pick, Esc to close. Picking an app jumps to it the same instant way. The list follows the
 order of the apps in Settings (reorder them with ▲ ▼).
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/menubar-dark.png">
-  <img src="docs/screenshots/menubar-light.png" width="692" alt="The menu bar icon in both styles: ⚡ when no shortcut app is focused, otherwise the focused app's icon (Ghostty, VS Code, Chrome, Edge)">
-</picture>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/menubar-dark.png">
+    <img src="docs/screenshots/menubar-light.png" width="692" alt="The menu bar icon in both styles: ⚡ when no shortcut app is focused, otherwise the focused app's icon (Ghostty, VS Code, Chrome, Edge)">
+  </picture>
+</p>
 
 ## Install
 
