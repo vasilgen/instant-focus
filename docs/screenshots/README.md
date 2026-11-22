@@ -25,7 +25,7 @@ How:
 
 - **Settings window:** ⌘⇧4, Space, **⌥-click** the window: macOS saves exactly the window, rounded
   corners transparent, no shadow. That's the look the README uses. (The current dark ones were
-  cropped to that shape afterwards; they still show v0.1.0 with the old scrollbar, so retake them.)
+  area captures, cropped to that shape afterwards.)
 - **App list:** ⌘⇧Space, then ⌘⇧4, Space, **⌥-click** the open list (menus are windows too).
 - **Demo:** ⌘⇧5 → Record Selected Portion, with KeyCastr showing the keys.
 
