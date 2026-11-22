@@ -100,14 +100,12 @@ universal app, publishes it on GitHub Releases, and updates the cask in
 | `scripts/render-icons.sh` | Render the icon artwork in `docs/screenshots/` from the app's drawing code |
 | `docs/screenshots/` | Images for the README and site, plus the shot list for manual screenshots |
 
-## Will it keep working across macOS updates?
+## Compatibility
 
-- **Public APIs (stable):** event taps, Accessibility, window list, app activation, launch at login.
-- **Private APIs (can break):** the Space lookup calls, and the synthetic Dock swipe ISS uses to
-  switch. Apple has changed swipe handling before; ISS v3.1 already carries macOS 27 fixes. If an
-  update breaks switching, update the vendored copy with `scripts/vendor-iss.sh <newer tag>` and rebuild.
-- **Failing soft:** the private Space calls are looked up at runtime, not linked, so if one
-  disappears the app still launches. Shortcuts still focus the app, with macOS's normal animation.
+Developed and tested on macOS 27. Skipping the animation relies on undocumented macOS behavior
+(as InstantSpaceSwitcher and yabai do), so a future macOS update could break that part. If it
+does, your shortcuts still take you to the right app, just with the normal animation, until an
+update fixes it.
 
 ## Credits
 
