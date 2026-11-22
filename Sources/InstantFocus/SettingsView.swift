@@ -64,6 +64,10 @@ struct SettingsView: View {
                 Picker("Menu bar icon", selection: $store.iconStyle) {
                     ForEach(IconStyle.allCases) { Text($0.title).tag($0) }
                 }
+                Toggle(isOn: $store.instantEverywhere) {
+                    Text("Make all app switching instant")
+                    Text("⌘Tab, the Dock and the rest skip the Space animation too")
+                }
                 Toggle("Launch at login", isOn: $store.launchAtLogin)
             }
         }
@@ -78,7 +82,7 @@ struct SettingsView: View {
     private var layout: (height: CGFloat, scrolls: Bool) {
         let maxRows = 10
         let count = store.shortcuts.count
-        let content = 464 + 37 * CGFloat(min(count, maxRows)) + (store.tapsReady ? 0 : 94)
+        let content = 518 + 37 * CGFloat(min(count, maxRows)) + (store.tapsReady ? 0 : 94)
         let screen = (NSScreen.main?.visibleFrame.height ?? 800) - 60
         return (min(content, screen), count > maxRows || content > screen)
     }

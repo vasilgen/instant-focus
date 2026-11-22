@@ -24,6 +24,12 @@ drawn black on white or white on black (your choice in Settings). Click it, or p
 to pick, Esc to close. Picking an app jumps to it the same instant way. The list follows the
 order of the apps in Settings (reorder them with ▲ ▼).
 
+Optional: tick **Make all app switching instant** in Settings and ⌘Tab, Dock clicks and anything
+else that brings an app forward skip the Space animation too. InstantFocus turns off macOS's
+"When switching to an application, switch to a Space with open windows" (Desktop & Dock) and does
+that switch itself, instantly. Unticking restores the macOS setting. While InstantFocus isn't
+running with this on, ⌘Tab won't take you to other Spaces.
+
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/menubar-dark.png">

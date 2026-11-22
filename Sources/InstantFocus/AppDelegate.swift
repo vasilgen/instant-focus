@@ -21,8 +21,15 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             iss_reset_predictions()
         }
         workspace.addObserver(forName: NSWorkspace.didActivateApplicationNotification, object: nil, queue: .main) {
-            [weak self] _ in self?.updateIcon()
+            [weak self] note in
+            self?.updateIcon()
+            // ⌘Tab, Dock, …: macOS activated the app without switching Spaces; do that switch, instantly.
+            if self?.store.instantEverywhere == true,
+               let app = note.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication {
+                Focuser.reveal(app)
+            }
         }
+        if store.instantEverywhere { Spaces.setSwitchOnActivate(false) }  // in case it was switched back on
         storeChanges = store.objectWillChange
             .receive(on: DispatchQueue.main)  // run after the change has landed
             .sink { [weak self] in self?.updateIcon() }

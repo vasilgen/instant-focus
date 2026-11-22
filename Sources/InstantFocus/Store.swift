@@ -29,6 +29,13 @@ final class Store: ObservableObject {
     }
     @Published var menuModifiers: UInt { didSet { defaults.set(menuModifiers, forKey: "menuModifiers") } }
     @Published var iconStyle: IconStyle { didSet { defaults.set(iconStyle.rawValue, forKey: "iconStyle") } }
+    /// Also make ⌘Tab, Dock, … switching instant (see `Spaces.setSwitchOnActivate`).
+    @Published var instantEverywhere: Bool {
+        didSet {
+            defaults.set(instantEverywhere, forKey: "instantEverywhere")
+            Spaces.setSwitchOnActivate(!instantEverywhere)
+        }
+    }
     /// Both event taps are installed (i.e. Accessibility is granted).
     @Published var tapsReady = false
     /// A shortcut recorder is listening; shortcuts shouldn't fire meanwhile.
@@ -45,6 +52,7 @@ final class Store: ObservableObject {
         menuKeyCode = menuKey >= 0 ? UInt16(menuKey) : nil
         menuModifiers = UInt(defaults.integer(forKey: "menuModifiers"))
         iconStyle = IconStyle(rawValue: defaults.string(forKey: "iconStyle") ?? "") ?? .blackOnWhite
+        instantEverywhere = defaults.bool(forKey: "instantEverywhere")
     }
 
     private func saveShortcuts() {

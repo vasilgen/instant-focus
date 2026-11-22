@@ -57,6 +57,20 @@ enum Spaces {
         return best
     }
 
+    /// macOS's "When switching to an application, switch to a Space with open windows for the
+    /// application" (Desktop & Dock). "Make all app switching instant" turns it off and does that
+    /// switch itself; unticking restores the default. The Dock reads it at launch, hence the restart.
+    static func setSwitchOnActivate(_ on: Bool) {
+        let key = "workspaces-auto-swoosh" as CFString, dock = "com.apple.dock" as CFString
+        guard (CFPreferencesCopyAppValue(key, dock) as? Bool ?? true) != on else { return }
+        CFPreferencesSetAppValue(key, on ? nil : kCFBooleanFalse, dock)
+        CFPreferencesAppSynchronize(dock)
+        let restart = Process()
+        restart.executableURL = URL(fileURLWithPath: "/usr/bin/killall")
+        restart.arguments = ["Dock"]
+        try? restart.run()
+    }
+
     static func isVisible(_ space: UInt64) -> Bool {
         managedDisplays().contains { spaceID($0["Current Space"]) == space }
     }
