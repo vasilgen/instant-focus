@@ -68,6 +68,13 @@ struct SettingsView: View {
             }
         }
         .formStyle(.grouped)
-        .frame(width: 460, height: 660)
+        .frame(width: 460, height: height)
+    }
+
+    /// Fit the window to its content (each app row is ~37 pt; the Accessibility notice ~94 pt),
+    /// up to the screen's height. Only past that does the form scroll.
+    private var height: CGFloat {
+        let content = 464 + 37 * CGFloat(store.shortcuts.count) + (store.tapsReady ? 0 : 94)
+        return min(content, (NSScreen.main?.visibleFrame.height ?? 800) - 60)
     }
 }

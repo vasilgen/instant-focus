@@ -41,6 +41,8 @@ cask "instantfocus" do
 
   app "InstantFocus.app"
 
+  uninstall quit: "io.github.vasilgen.InstantFocus"
+
   zap trash: "~/Library/Preferences/io.github.vasilgen.InstantFocus.plist"
 end
 EOF

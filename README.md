@@ -57,9 +57,25 @@ developer cannot be verified"):
 2. Go to System Settings → Privacy & Security, scroll down, and click **Open Anyway** next to InstantFocus.
    (Or, in Terminal: `xattr -dr com.apple.quarantine /Applications/InstantFocus.app`.)
 3. When asked, allow InstantFocus under **Accessibility**: shortcuts and switching need it.
-   After an update, macOS may ask again.
 
 Then add your apps and their shortcuts in the Settings window that opens.
+
+### Updating
+
+**Homebrew:**
+
+```sh
+brew upgrade --cask instantfocus
+```
+
+It quits InstantFocus, installs the new version, and keeps your settings. Open the app again afterwards.
+
+**Download:** quit InstantFocus, then replace `InstantFocus.app` in Applications with the one from
+the latest [release](https://github.com/vasilgen/instant-focus/releases).
+
+After an update, macOS treats it as a new app: repeat **Open Anyway** and the **Accessibility**
+permission from [First launch](#first-launch). (If InstantFocus still shows as allowed under
+Accessibility but shortcuts don't work, the app clears the old entry and asks again on launch.)
 
 ## How it works
 
