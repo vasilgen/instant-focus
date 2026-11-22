@@ -1,14 +1,29 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/icon-black-on-white.png">
+  <img src="docs/screenshots/icon-white-on-black.png" width="96" align="right" alt="InstantFocus icon">
+</picture>
+
 # InstantFocus
 
 A tiny macOS menu bar app: give each app a shortcut, press it, and you're in that app,
 whether its window is on the current Space, another Space, or full screen. No slide, no
 crossfade. That's all it does: trackpad swipes and other Space switching stay as macOS has them.
 
+<p>
+  <img src="docs/screenshots/settings-dark.png" width="469" alt="Settings: your apps with their shortcuts (reorderable), the app list shortcut, menu bar icon style, launch at login">
+  <img src="docs/screenshots/app-list-dark.png" width="222" alt="The app list: your apps with their shortcuts, plus Settings and Quit">
+</p>
+
 The menu bar shows the focused app's icon when that app has a shortcut, otherwise ⚡,
 drawn black on white or white on black (your choice in Settings). Click it, or press
 **⌘⇧Space** (changeable in Settings), for a list of your apps: ↑ ↓ to move, Return or Space
 to pick, Esc to close. Picking an app jumps to it the same instant way. The list follows the
 order of the apps in Settings (reorder them with ▲ ▼).
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/menubar-dark.png">
+  <img src="docs/screenshots/menubar-light.png" width="692" alt="The menu bar icon in both styles: ⚡ when no shortcut app is focused, otherwise the focused app's icon (Ghostty, VS Code, Chrome, Edge)">
+</picture>
 
 ## Install
 
@@ -76,6 +91,8 @@ universal app, publishes it on GitHub Releases, and updates the cask in
 | `Sources/ISS/` | InstantSpaceSwitcher's core C code, vendored **unmodified** (MIT, see `Sources/ISS/LICENSE`) |
 | `scripts/vendor-iss.sh [tag]` | Re-copy ISS's core at a given release tag (current one in `Sources/ISS/VERSION`) |
 | `scripts/build.sh`, `scripts/release.sh` | Build/install locally; publish a release |
+| `scripts/render-icons.sh` | Render the icon artwork in `docs/screenshots/` from the app's drawing code |
+| `docs/screenshots/` | Images for the README and site, plus the shot list for manual screenshots |
 
 ## Will it keep working across macOS updates?
 

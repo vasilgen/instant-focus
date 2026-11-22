@@ -12,7 +12,7 @@ enum IconStyle: String, CaseIterable, Identifiable {
 /// The menu bar icon: a two-color tile showing the focused app's icon, or ⚡ when there's none.
 enum MenuBarIcon {
     static func make(style: IconStyle, app: NSImage?, side: CGFloat = 18) -> NSImage {
-        let mask = app.flatMap(luminanceMask)
+        let mask = app.flatMap { luminanceMask($0, pixels: Int(side * 4)) }
         let image = NSImage(size: NSSize(width: side, height: side), flipped: false) { rect in
             let tile = NSBezierPath(roundedRect: rect, xRadius: side / 4, yRadius: side / 4)
             style.background.setFill()
@@ -39,8 +39,7 @@ enum MenuBarIcon {
 
     /// The app icon's brightness as a mask: its glyph (bright on the dark-style icon) gets
     /// painted in the foreground color, its dark backdrop lets the tile show through.
-    private static func luminanceMask(_ icon: NSImage) -> CGImage? {
-        let px = 72
+    private static func luminanceMask(_ icon: NSImage, pixels px: Int) -> CGImage? {
         guard let ctx = CGContext(data: nil, width: px, height: px, bitsPerComponent: 8, bytesPerRow: 0,
                                   space: CGColorSpaceCreateDeviceGray(),
                                   bitmapInfo: CGImageAlphaInfo.none.rawValue)
