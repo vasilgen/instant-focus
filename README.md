@@ -65,10 +65,12 @@ Then add your apps and their shortcuts in the Settings window that opens.
 **Homebrew:**
 
 ```sh
-brew upgrade --cask instantfocus
+brew update && brew upgrade --cask instantfocus
 ```
 
-It quits InstantFocus, installs the new version, and keeps your settings. Open the app again afterwards.
+It quits InstantFocus, installs the new version, and keeps your settings. Open the app again
+afterwards. (`brew update` makes Homebrew see a release right away; it only checks on its own
+every so often.)
 
 **Download:** quit InstantFocus, then replace `InstantFocus.app` in Applications with the one from
 the latest [release](https://github.com/vasilgen/instant-focus/releases).
