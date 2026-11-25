@@ -9,7 +9,7 @@ struct AboutView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 12) {
-                Image(nsImage: MenuBarIcon.make(style: style, app: nil, side: 36))
+                Image(nsImage: MenuBarIcon.make(style: style, side: 36))
                     .overlay(RoundedRectangle(cornerRadius: 9).strokeBorder(.quaternary))
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(alignment: .firstTextBaseline, spacing: 6) {
@@ -23,7 +23,7 @@ struct AboutView: View {
             VStack(alignment: .leading, spacing: 6) {
                 Label("Finds the app on any Space, even in full screen", systemImage: "macwindow.on.rectangle")
                 Label("Switches instantly, with no sliding animation", systemImage: "bolt.fill")
-                Label("The menu bar shows which app is focused", systemImage: "menubar.rectangle")
+                Label("Lives in the menu bar", systemImage: "menubar.rectangle")
                 Label("Click it\(listShortcut.map { " or press \($0)" } ?? "") to pick an app from a list",
                       systemImage: "list.bullet")
             }

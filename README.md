@@ -18,8 +18,8 @@ crossfade. That's all it does: trackpad swipes and other Space switching stay as
   <img src="docs/screenshots/app-list-dark.png" width="217" align="top" alt="The app list: your apps with their shortcuts, plus Settings and Quit">
 </p>
 
-The menu bar shows the focused app's icon when that app has a shortcut, otherwise ⚡,
-drawn black on white or white on black (your choice in Settings). Click it, or press
+The menu bar icon is a ⚡, drawn black on white or white on black (your choice in Settings).
+Click it, or press
 **⌘⇧Space** (changeable in Settings), for a list of your apps: ↑ ↓ to move, Return or Space
 to pick, Esc to close. Picking an app jumps to it the same instant way. The list follows the
 order of the apps in Settings (reorder them with ▲ ▼).
@@ -29,13 +29,6 @@ else that brings an app forward skip the Space animation too. InstantFocus turns
 "When switching to an application, switch to a Space with open windows" (Desktop & Dock) and does
 that switch itself, instantly. Unticking restores the macOS setting. While InstantFocus isn't
 running with this on, ⌘Tab won't take you to other Spaces.
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/menubar-dark.png">
-    <img src="docs/screenshots/menubar-light.png" width="692" alt="The menu bar icon in both styles: ⚡ when no shortcut app is focused, otherwise the focused app's icon (Ghostty, VS Code, Chrome, Edge)">
-  </picture>
-</p>
 
 ## Install
 

@@ -8,7 +8,6 @@ re-run `scripts/render-icons.sh`.
 | File | What |
 | --- | --- |
 | `icon-black-on-white.png`, `icon-white-on-black.png` | The ⚡ tile, 512 px |
-| `menubar-light.png`, `menubar-dark.png` | The menu bar icon in both styles, on a light / dark menu bar |
 
 ## Captured
 

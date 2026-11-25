@@ -7,7 +7,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     private let store = Store.shared
     private var statusItem: NSStatusItem!
     private var settingsWindow: NSWindow?
-    private var storeChanges: AnyCancellable?
+    private var styleChanges: AnyCancellable?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         Permissions.promptIfNeeded()
@@ -20,19 +20,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         workspace.addObserver(forName: NSWorkspace.activeSpaceDidChangeNotification, object: nil, queue: .main) { _ in
             iss_reset_predictions()
         }
+        // ⌘Tab, Dock, …: macOS activated the app without switching Spaces; do that switch, instantly.
         workspace.addObserver(forName: NSWorkspace.didActivateApplicationNotification, object: nil, queue: .main) {
             [weak self] note in
-            self?.updateIcon()
-            // ⌘Tab, Dock, …: macOS activated the app without switching Spaces; do that switch, instantly.
             if self?.store.instantEverywhere == true,
                let app = note.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication {
                 Focuser.reveal(app)
             }
         }
         if store.instantEverywhere { Spaces.setSwitchOnActivate(false) }  // in case it was switched back on
-        storeChanges = store.objectWillChange
-            .receive(on: DispatchQueue.main)  // run after the change has landed
-            .sink { [weak self] in self?.updateIcon() }
+        styleChanges = store.$iconStyle.sink { [weak self] in
+            self?.statusItem.button?.image = MenuBarIcon.make(style: $0)
+        }
 
         if store.shortcuts.isEmpty || !store.tapsReady { showSettings() }
     }
@@ -61,7 +60,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         menu.delegate = self
         menuNeedsUpdate(menu)
         statusItem.menu = menu  // a click opens it; so does the app-list shortcut (toggleMenu)
-        updateIcon()
     }
 
     /// Open the menu under the menu bar icon, or close it if it's open. Positioned
@@ -104,13 +102,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         if let app = store.shortcuts.first(where: { $0.id == sender.representedObject as? UUID }) {
             Focuser.focus(app)
         }
-    }
-
-    /// The frontmost app's icon when that app has a shortcut, otherwise ⚡.
-    private func updateIcon() {
-        let front = NSWorkspace.shared.frontmostApplication
-        let hasShortcut = front?.bundleIdentifier.map { id in store.shortcuts.contains { $0.bundleID == id } } ?? false
-        statusItem.button?.image = MenuBarIcon.make(style: store.iconStyle, app: hasShortcut ? front?.icon : nil)
     }
 
     @objc func showSettings() {
